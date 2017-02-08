@@ -11,6 +11,22 @@ module AlexaSkillsRuby
         card.content = content
         card
       end
+      
+      def self.launch
+        card = new
+        card.type = "LinkAccount"
+        card
+      end
+      
+      def self.standard(title, text, small_image_url, large_image_url)
+        card = new
+        card.type = "Standard"
+        card.title = title
+        card.text = text
+        card.smallImageUrl = small_image_url
+        card.largeImageUrl = large_image_url
+        card
+      end
     end
   end
 end
