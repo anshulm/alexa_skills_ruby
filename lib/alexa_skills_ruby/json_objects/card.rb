@@ -12,7 +12,7 @@ module AlexaSkillsRuby
         card
       end
       
-      def self.launch
+      def self.link_account
         card = new
         card.type = "LinkAccount"
         card

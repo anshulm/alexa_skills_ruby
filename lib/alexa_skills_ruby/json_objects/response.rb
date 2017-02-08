@@ -26,8 +26,8 @@ module AlexaSkillsRuby
         self.card = Card.standard(title, text, small_image_url, large_image_url)
       end
 
-      def set_launch_card
-        self.card = Card.launch
+      def set_link_account_card
+        self.card = Card.link_account
       end
 
       def set_reprompt_speech_text(text)

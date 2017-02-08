@@ -62,6 +62,18 @@ describe AlexaSkillsRuby::JsonObjects::SkillsResponse do
     }
   end
 
+  let(:response_json_launch_card) do
+    {
+        'version'           => "1.0",
+        "sessionAttributes"=>{},
+        "response"          => {
+            "shouldEndSession" => false,
+            "card"             => {
+                "type"    => "LinkAccount"}
+        }
+    }
+  end
+
   it 'generates example json' do
     sr = AlexaSkillsRuby::JsonObjects::SkillsResponse.new
     r = sr.response
@@ -84,6 +96,15 @@ describe AlexaSkillsRuby::JsonObjects::SkillsResponse do
     r.should_end_session = false
 
     expect(sr.as_json).to eq respons_json_ssml
+  end
+
+  it 'generates json for launch card' do
+    sr                    = AlexaSkillsRuby::JsonObjects::SkillsResponse.new
+    r                     = sr.response
+    r.set_link_account_card
+    r.should_end_session = false
+
+    expect(sr.as_json).to eq response_json_launch_card
   end
 
 end
