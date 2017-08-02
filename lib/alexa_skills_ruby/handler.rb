@@ -47,7 +47,8 @@ module AlexaSkillsRuby
         end
       end
 
-      timestamp_diff = (Time.now - Time.iso8601(@request.timestamp)).abs
+      # timestamp_diff = (Time.now - Time.iso8601(@request.timestamp)).abs
+      timestamp_diff = (Time.now - Time.iso8601(DateTime.parse(Time.at(@request.timestamp.to_f/1000).to_s).to_s)).abs
       raise TimestampValidationError, "Invalid timstamp" if timestamp_diff > 150
 
       run_callbacks :authenticate do
